@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "1b6e84e1-4ab1-4534-a10b-5d48e689f10e",
+		"name": "GIT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List hooks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token {{git_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://github.com/api/v3/repos/<org>/<repo>/hooks",
+					"protocol": "https",
+					"host": [
+						"github",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"repos",
+						"<org>",
+						"<repo>",
+						"hooks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create webhook",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "token {{git_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n\n{\"active\": true, \"events\": [\"push\",\"pull_request\"],\"config\": {\"url\": \"https://<jenkins_url>/github-webhook/\", \"content_type\": \"json\",\"insecure_ssl\": \"0\"}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://github.com/api/v3/repos/<org>/<repo>/hooks",
+					"protocol": "https",
+					"host": [
+						"github",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"repos",
+						"<org>",
+						"<repo>",
+						"hooks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete webhook",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token {{git_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://github.com/api/v3/repos/<org>/<repo>/hooks/3066633",
+					"protocol": "https",
+					"host": [
+						"github",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"repos",
+						"<org>",
+						"<repo>",
+						"hooks",
+						"3066633"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List tags",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token {{git_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://github.com/api/v3/repos/<org>/<repo>/tags",
+					"protocol": "https",
+					"host": [
+						"github",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"repos",
+						"<org>",
+						"<repo>",
+						"tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add tags",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "token {{git_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"tag\": \"v0.0.1\",\n  \"message\": \"initial version\",\n  \"object\": \"b0fa74b3599c27ddcceffeca7ee1d161c3e8e207\",\n  \"type\": \"commit\",\n  \"tagger\": {\n    \"name\": \"Subhash Samota\",\n    \"email\": \"\"\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://github.com/api/v3/repos/<org>/<repo>/git/tags",
+					"protocol": "https",
+					"host": [
+						"github",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"repos",
+						"<org>",
+						"<repo>",
+						"git",
+						"tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get release",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token {{git_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://github.com/api/v3/repos/<org>/<repo>/releases",
+					"protocol": "https",
+					"host": [
+						"github",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"repos",
+						"<org>",
+						"<repo>",
+						"releases"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list repos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token {{git_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://github.com/api/v3/orgs/<org>/repos?types=all",
+					"protocol": "https",
+					"host": [
+						"github",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"orgs",
+						"<org>",
+						"repos"
+					],
+					"query": [
+						{
+							"key": "types",
+							"value": "all"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete webhook",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "token {{git_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"jenkins\",\n  \"active\": true,\n  \"events\": [\n    \"push\",\n    \"pull_request\"\n  ],\n  \"config\": {\n    \"url\": \"https://<jenkins_url>/github-webhook/\",\n    \"content_type\": \"json\",\n    \"insecure_ssl\": \"0\"\n  }\n}"
+				},
+				"url": {
+					"raw": "https://github.com/api/v3/repos/<org>/<repo>/hooks",
+					"protocol": "https",
+					"host": [
+						"github",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"repos",
+						"<org>",
+						"<repo>",
+						"hooks"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
