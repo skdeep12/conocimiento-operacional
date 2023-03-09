@@ -17,7 +17,7 @@ do
     then
         #mv $table/snapshots/10.114.35.68-keyspace-13:04:2020T07:40:59/* $table/
         #rm -rf $table/snapshots/
-        cp $table/* /tmp/cassandra/data/tps_tradedunit/
+        cp $table/* /tmp/cassandra/data/table/
     fi
 done
 cd ..
