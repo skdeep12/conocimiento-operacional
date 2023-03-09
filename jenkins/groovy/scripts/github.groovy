@@ -10,7 +10,7 @@ def created = false
 for (e in env) { 
     if(e.key.contains(github_credentials_id) && e.value.trim() != null){
         def config = new GitHubServerConfig(github_credentials_id)
-        config.setName("Tesco")
+        config.setName("OrgName")
         config.setApiUrl("<github_api_url>")
         config.setManageHooks(false)
 
